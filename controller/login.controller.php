@@ -67,7 +67,7 @@ public function LoginAlumno(){
   $consulta=$this->model->VerificaAlumno($noCtrl,$password);
   $json=array();
   if (!$consulta==null) {
-    $row_array['mensaje']='success';
+    $row_array['success']=true;
     $row_array['noCtrl']=$consulta->noCtrl;
     $row_array['nombre']=$consulta->nombre;
     $row_array['primerApellido']=$consulta->primerApellido;
