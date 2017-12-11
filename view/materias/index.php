@@ -52,36 +52,45 @@
             <table id="example1" class="table table-bordered table-striped">
               <thead>
                 <tr>
-                  <th>claveMateria</th>
+                  <th width="15%">claveMateria</th>
                   <th>Materia</th>
+                  <th width="10%">Ver</th>
+                  <th width="10%">Asignar</th>
+                  
                 </tr>
               </thead>
               <tbody>
+                <?php foreach($this->model->listar() as $materia): ?>
+                  <tr>
+                    <td>ITZM<?php echo $materia->claveMateria; ?></td>
+                    <td><?php echo $materia->materia; ?></td>
+                    <td><button type="button" data-toggle="modal" data-target="#modal-unidades" onclick="listarUnidades(<?php echo $materia->claveMateria;?>);" class="btn btn-block btn-info btn-xs"><i class="fa fa-eye"></i></button></td>
+                    <td><button type="button" data-toggle="modal" data-target="#modal-noUnidades" onclick="claveMateria(<?php echo $materia->claveMateria;?>);" class="btn btn-block btn-success btn-xs"><i class="fa fa-edit"></i></button></td>
+                    <!--td><button type="button" class="btn btn-block btn-danger btn-xs"><i class="fa fa-eraser"></i></button></td-->
+                  </tr>
+                <?php endforeach; ?>
+              </tbody>
+              <tfoot>
                 <tr>
-                  <td>13450570</td>
-                  <td>Aplicaciones Moviles</td>                  
-                </td>
-              </tr>
-            </tbody>
-            <tfoot>
-              <tr>
-               <th>claveMateria</th>
-               <th>Materia</th>
-             </th>
-           </tr>
-         </tfoot>
-       </table>
+                 <th>claveMateria</th>
+                 <th>Materia</th>
+                 <th>Ver</th>
+                 <th>Asignar</th>
+                 
+               </tr>
+             </tfoot>
+           </table>
+         </div>
+         <!-- /.box-body -->
+       </div>
+       <!-- /.box -->
      </div>
-     <!-- /.box-body -->
+     <!-- /.col -->
    </div>
-   <!-- /.box -->
- </div>
- <!-- /.col -->
-</div>
-<!-- /.row -->
-</section>
-<!-- /.content -->
-<div class="modal fade" id="modal-eliminar">
+   <!-- /.row -->
+ </section>
+ <!-- /.content -->
+ <div class="modal fade" id="modal-eliminar">
   <div class="modal-dialog">
     <div class="modal-content">
       <form action="?c=Materia&a=Guardar" method="POST">
@@ -101,9 +110,56 @@
          <div class="modal-footer">
           <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
           <button type="submit" class="btn btn-primary">Aceptar</a>
-        </div>
-      </form>
-    </div><!-- /.modal-content -->
-  </div><!-- /.modal-dialog -->
-</div><!-- /.modal -->
+          </div>
+        </form>
+      </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+  </div><!-- /.modal -->
 
+  <!-- /.content -->
+  <div class="modal fade" id="modal-noUnidades">
+    <div class="modal-dialog"  style="width: 20%;">
+      <div class="modal-content">
+        <form action="?c=Materia&a=Unidades" method="POST">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span></button>
+              <h3 class="modal-title">Registrar unidades</h3>
+            </div>
+            <div class="modal-body">
+              <div class="form-group row">
+               <label class="col-md-7" for="txtCodigoUsuario">Número de unidades</label>
+               <input class="col-md-4" name="noUnidades" type="number" class="form-control" id="txtMateria" placeholder="#" required>
+
+             </div><!-- /.form-group -->
+             <input class="col-md-4" name="claveMateria" type="hidden" class="form-control" id="txtClaveMateria" placeholder="#" required>
+           </div>
+           <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+            <button type="submit" class="btn btn-primary">Aceptar</a>
+            </div>
+          </form>
+        </div><!-- /.modal-content -->
+      </div><!-- /.modal-dialog -->
+    </div><!-- /.modal -->
+
+    <!-- /.content -->
+    <div class="modal fade" id="modal-unidades">
+      <div class="modal-dialog" style="width: 40%">
+        <div class="modal-content" id="modalUnidades">
+
+
+        </div><!-- /.modal-content -->
+      </div><!-- /.modal-dialog -->
+    </div><!-- /.modal -->
+
+    <script>
+      claveMateria = function(claveMateria){
+        $("#txtClaveMateria").val(claveMateria);
+      }
+      listarUnidades = function (claveMateria){
+        $.post("index.php?c=Materia&a=ListarUnidades", {claveMateria: claveMateria}, function(modal) {
+          $("#modalUnidades").html(modal);
+        }); 
+      }
+  </script>

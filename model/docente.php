@@ -55,5 +55,6 @@ class Docente
 			die($e->getMessage());
 		}
 	}
+	
 }
 ?>

@@ -7,6 +7,8 @@ class Alumno
 	public $segundoApellido;
 	public $noCtrl;
 	public $idAlumno;
+	public $grupo;
+
 
 	public function __CONSTRUCT()
 	{
@@ -24,18 +26,35 @@ class Alumno
 	{
 		try 
 		{
-			$sql = "INSERT INTO alumnos VALUES (null,?,?,?,?)";
+			$sql = "INSERT INTO alumnos VALUES (?,?,?,?,?)";
 
 			$this->pdo->prepare($sql)
 			->execute(
 				array(
+					$data->noCtrl,
 					$data->nombre,
 					$data->primerApellido,
 					$data->segundoApellido,
-					$data->noCtrl
+					$data->grupo,
 				)
 			);
 		} catch (Exception $e) 
+		{
+			die($e->getMessage());
+		}
+	}
+		//Metdodo para listar
+	public function Listar()
+	{
+		try
+		{
+			$stm = $this->pdo->prepare("SELECT * FROM alumnos");
+			
+			$stm->execute(array());
+
+			return $stm->fetchAll(PDO::FETCH_OBJ);
+		}
+		catch(Exception $e)
 		{
 			die($e->getMessage());
 		}

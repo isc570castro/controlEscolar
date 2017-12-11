@@ -15,11 +15,11 @@ class LoginController{
    $log = new Login();
    $usuario=$log->usuario = $_REQUEST['usuario'];
    $password = $_REQUEST['password'];
-   $password=md5($password);
-   $password=crc32($password);
-   $password=crypt($password,"xtem");
-   $password=sha1($password);
-   echo $password;
+   //$password=md5($password);
+   //$password=crc32($password);
+   //$password=crypt($password,"xtem");
+  // $password=sha1($password);
+   //echo $password;
    $consulta=$this->model->verificar($log);
    if($consulta!=null){
     if($consulta->password == $password){
@@ -57,4 +57,26 @@ public function logout()
   unset($_SESSION['seguridad']);
   header ('Location: index.php');
 }
+public function LoginAlumno(){
+    header('Content-Type: application/json');
+    $noCtrl=$_REQUEST['username'];
+    $password=$_REQUEST['password'];
+    $consulta=$this->model->VerificaAlumno($noCtrl,$password);
+    $json=array();
+    if (!$consulta==null) {
+      $row_array['mensaje']='success';
+      $row_array['noCtrl']=$consulta->noCtrl;
+      $row_array['nombre']=$consulta->nombre;
+      $row_array['primerApellido']=$consulta->primerApellido;
+      $row_array['segundoApellido']=$consulta->segundoApellido;
+      $row_array['grupo']=$consulta->grupo;
+
+
+      array_push($json, $row_array);
+    }else{
+      $row_array['mensaje']='fail';
+      array_push($json, $row_array);
+    }
+    echo json_encode($json, JSON_FORCE_OBJECT);
+  }
 }

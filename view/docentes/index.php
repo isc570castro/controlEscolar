@@ -26,7 +26,7 @@
                       <b>
                        
                         <div class="btn-group" style="margin-right: 10px; margin-top: 10px;"> 
-                          <a style="width: 150px" class="btn btn-sm btn-default tooltips" href="?c=Docente&a=Crud" data-toggle="tooltip" data-placement="bottom" data-original-title="Registrar nuevo alumno"> <i class="fa fa-plus"></i> Registrar </a>
+                          <a style="width: 150px" class="btn btn-sm btn-default tooltips" href="?c=Docente&a=Crud" data-toggle="tooltip" data-placement="bottom" data-original-title="Registrar nuevo docente"> <i class="fa fa-plus"></i> Registrar </a>
                         </div>
     
                       </b>
@@ -59,12 +59,15 @@
                   </tr>
                 </thead>
                 <tbody>
+                   <?php foreach($this->model->listar() as $docente): ?>
                   <tr>
-                    <td>Alejandro</td>
-                    <td>Castro</td>                   
-                    <td>Saucedo</td>                   
-                  </td>
-                </tr>
+                    
+                    <td><?php echo $docente->nombre; ?></td>
+                    <td><?php echo $docente->primerApellido; ?></td>
+                    <td><?php echo $docente->segundoApellido; ?></td>
+           
+                  </tr>
+                <?php endforeach; ?>
               </tbody>
               <tfoot>
                 <tr>

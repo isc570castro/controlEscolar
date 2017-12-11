@@ -22,17 +22,17 @@
                       <h3 class="box-title">Datos generales de los usuarios activos</h3>
                     </div>
                   </div>              
-                  <div class="col-md-3">
-                    <div class="btn-group pull-right">
-                      <b>
-                       
-                        <div class="btn-group" style="margin-right: 10px; margin-top: 10px;"> 
-                          <a style="width: 150px" class="btn btn-sm btn-registrar tooltips" href="?c=Usuario&a=Crud" data-toggle="tooltip" data-placement="bottom" data-original-title="Registrar nuevo usuario"> <i class="fa fa-plus"></i> Registrar </a>
-                        </div>
-    
-                      </b>
+                  < <div class="col-md-3">
+                <div class="btn-group pull-right">
+                  <b>
+
+                    <div class="btn-group" style="margin-right: 10px; margin-top: 10px;"> 
+                      <a style="width: 150px" class="btn btn-sm btn-default tooltips" href="?c=Usuario&a=Crud" data-toggle="tooltip" data-placement="bottom" data-original-title="Registrar nuevo usuario"> <i class="fa fa-plus"></i> Registrar </a>
                     </div>
-                  </div><!--/col-md-4-->                  
+
+                  </b>
+                </div>
+              </div><!--/col-md-4-->                  
               </div><!--/row--> 
             <!-- /.box-header -->
             <div class="box-body">

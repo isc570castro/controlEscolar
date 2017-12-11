@@ -29,6 +29,8 @@
    <link rel="stylesheet" href="plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.min.css">
    <link rel="stylesheet" href="dist/bower_components/datatables.net-bs/css/dataTables.bootstrap.min.css">
    <link rel="stylesheet" href="dist/bower_components/select2/dist/css/select2.min.css">
+   <link rel="stylesheet" href="dist/plugins/timepicker/bootstrap-timepicker.min.css">
+  <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
 
 
 <!-- AdminLTE Skins. Choose a skin from the css/skins
@@ -259,7 +261,7 @@
     <li class="dropdown user user-menu">
       <a href="#" class="dropdown-toggle" data-toggle="dropdown">
         <img src="dist/img/user.png" class="user-image" alt="User Image">
-        <span class="hidden-xs">Diana Rosas Hdez</span>
+        <span class="hidden-xs"><?php if(isset($_SESSION['docente'])) echo $_SESSION['docente'];?></span>
       </a>
       <ul class="dropdown-menu">
         <!-- User image -->
@@ -267,7 +269,7 @@
           <img src="dist/img/user.png" class="img-circle" alt="User Image">
 
           <p>
-            Diana Rosas  Hdez - Web Developer
+            <?php if(isset($_SESSION['docente'])) echo $_SESSION['docente'];?> - Web Developer
             <small>Member since Nov. 2012</small>
           </p>
         </li>
@@ -300,7 +302,7 @@
         <img src="dist/img/user.png" class="img-circle" alt="User Image">
       </div>
       <div class="pull-left info">
-        <p>Diana Rosas Hdez</p>
+        <p><?php if(isset($_SESSION['user'])) echo $_SESSION['user'];?></p>
         <a href="#"><i class="fa fa-circle text-success"></i> En línea</a>
       </div>
     </div>
@@ -332,19 +334,19 @@
           <li <?php if(isset($docentes)){ ?> class="active" <?php } ?>><a  href="?c=Docente"><i class="fa fa-user"></i>Docentes</a></li>
           <li <?php if(isset($materias)){ ?> class="active" <?php } ?>><a  href="?c=Materia"><i class="fa fa-pencil-square-o"></i>Materias</a></li>
           <li <?php if(isset($alumnos)){ ?> class="active" <?php } ?>><a  href="?c=Alumno"><i class="fa fa-male"></i>Alumnos</a></li>
+          <li <?php if(isset($cursos)){ ?> class="active" <?php } ?>><a  href="?c=Curso"><i class="fa fa-th-large"></i>Cursos</a></li>
           <li <?php if(isset($usuarios)){ ?> class="active" <?php } ?>><a  href="?c=Usuario"><i class="fa fa-users"></i>Usuarios</a></li>
         </ul>
 
       </li>
-      
+      <li <?php if(isset($cursos2)){ ?> class="active" <?php } ?>>
+        <a href="?c=Curso&a=Seleccion">
+          <i class="fa  fa-th-large"></i> <span>Cursos</span>
+        </a>
+      </li>
       <li <?php if(isset($ayudas)){ ?> class="active" <?php } ?>>
         <a href="?c=ayuda">
           <i class="fa fa-list-alt"></i> <span>Listas</span>
-        </a>
-      </li>
-      <li <?php if(isset($calificaciones)){ ?> class="active" <?php } ?>>
-        <a href="?c=ayuda">
-          <i class="fa fa-question-circle"></i> <span>Calificaciones</span>
         </a>
       </li>
     </ul>
@@ -621,7 +623,7 @@
     })
   })
 </script>
-
+<script src="dist/plugins/timepicker/bootstrap-timepicker.min.js"></script>
 <!-- Bootstrap 3.3.7 -->
 <script src="dist/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
 <!-- Morris.js charts -->

@@ -19,7 +19,7 @@ class Login
 	}
 	public function Comprueba(Login $log){
 		try {
-			$sql=$this->pdo->prepare("SELECT * FROM usuarios WHERE usuario=? AND password=?");
+			$sql=$this->pdo->prepare("SELECT * FROM usuariosDocentes WHERE usuario=? AND password=?");
 			$resultado=$sql->execute(
 			 	array(
 			 		$log->usuario,
@@ -35,10 +35,27 @@ class Login
 	{
 		try 
 		{
-			$sql= $this->pdo->prepare("SELECT * FROM usuarios,direccion WHERE BINARY usuario=? AND usuarios.idDireccion = direccion.idDireccion");
+			$sql= $this->pdo->prepare("SELECT * FROM usuariosDocentes WHERE usuario=?");
 			$resultado=$sql->execute(
 				array(
                     $data->usuario,
+                )
+			);
+			return $sql->fetch(PDO::FETCH_OBJ,PDO::FETCH_ASSOC);
+		} catch (Exception $e) 
+		{
+			die($e->getMessage());
+		}
+	}
+	public function VerificaAlumno($noCtrl,$password)
+	{
+		try 
+		{
+			$sql= $this->pdo->prepare("SELECT * FROM usuariosAlumnos,alumnos WHERE usuariosAlumnos.noCtrl=? AND password=? AND usuariosAlumnos.noCtrl=alumnos.noCtrl");
+			$resultado=$sql->execute(
+				array(
+                    $noCtrl,
+                    $password
                 )
 			);
 			return $sql->fetch(PDO::FETCH_OBJ,PDO::FETCH_ASSOC);

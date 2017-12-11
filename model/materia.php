@@ -33,5 +33,71 @@ class Materia
 			die($e->getMessage());
 		}
 	}
+		//Metdodo para listar
+	public function Listar()
+	{
+		try
+		{
+			$stm = $this->pdo->prepare("SELECT * FROM materias");
+			
+			$stm->execute(array());
+
+			return $stm->fetchAll(PDO::FETCH_OBJ);
+		}
+		catch(Exception $e)
+		{
+			die($e->getMessage());
+		}
+	}
+	public function RegistraUnidades($noUnidad, $unidad, $claveMateria)
+	{
+		try 
+		{
+			$sql = "INSERT INTO unidades VALUES (null,?,?,?)";
+			$this->pdo->prepare($sql)
+			->execute(
+				array(
+					$noUnidad,
+					$unidad,
+					$claveMateria
+				)
+			);
+		} catch (Exception $e) 
+		{
+			die($e->getMessage());
+		}
+	}
+		//Metdodo para listar
+	public function ListarUnidades($claveMateria)
+	{
+		try
+		{
+			$stm = $this->pdo->prepare("SELECT * FROM unidades WHERE claveMateria=?");
+			
+			$stm->execute(array($claveMateria));
+
+			return $stm->fetchAll(PDO::FETCH_OBJ);
+		}
+		catch(Exception $e)
+		{
+			die($e->getMessage());
+		}
+	}
+
+	public function ObtenerMateria($claveMateria)
+	{
+		try
+		{
+			$stm = $this->pdo
+			->prepare("SELECT * FROM materias WHERE claveMateria = ?");
+			$stm->execute(array($claveMateria));
+			return $stm->fetch(PDO::FETCH_OBJ);
+		}
+		catch(Exception $e)
+		{
+			die($e->getMessage());
+		}
+	}
+
 }
 ?>

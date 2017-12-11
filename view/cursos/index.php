@@ -1,12 +1,12 @@
     <!-- Content Header (Page header) -->
     <section class="content-header">
       <h1>
-        Alumnos
-        <small>Datos de alumnos</small>
+        Cursos
+        <small>Datos de cursos</small>
       </h1>
       <ol class="breadcrumb">
-        <li><a href="?c=inicio"><i class="fa fa-dashboard"></i> Inicio</a></li>
-        <li class="active">Alumnos</li>
+        <li><a href="?c=Inicio"><i class="fa fa-dashboard"></i> Inicio</a></li>
+        <li class="active">Cursos</li>
       </ol>
     </section>
     <!-- Main content -->
@@ -19,7 +19,7 @@
 
               <div class="col-md-9">
                 <div class="box-header">
-                  <h3 class="box-title">Datos generales de los alumnos activos</h3>
+                  <h3 class="box-title">Datos generales de los cursos activos</h3>
                 </div>
               </div>              
               <div class="col-md-3">
@@ -27,7 +27,7 @@
                   <b>
 
                     <div class="btn-group" style="margin-right: 10px; margin-top: 10px;"> 
-                      <a style="width: 150px" class="btn btn-sm btn-default tooltips" href="?c=Alumno&a=Crud" data-toggle="tooltip" data-placement="bottom" data-original-title="Registrar nuevo alumno"> <i class="fa fa-plus"></i> Registrar </a>
+                      <a style="width: 150px" class="btn btn-sm btn-default tooltips" href="?c=Curso&a=Crud" data-toggle="tooltip" data-placement="bottom" data-original-title="Registrar nuevo curso"> <i class="fa fa-plus"></i> Registrar </a>
                     </div>
 
                   </b>
@@ -53,32 +53,34 @@
              <table id="example1" class="table table-bordered table-striped">
               <thead>
                 <tr>
-                  <th>No. Ctrl</th>
-                  <th>Nombre</th>
-                  <th>Primer apellido</th>
-                  <th>Segundo apellido</th>
+                  <th>Clave de curso</th>
+                  <th>Materia</th>
+                  <th>Docente</th>
+                  <th>Periodo</th>
                   <th>Grupo</th>
+                  <th>Horario</th>
                 </tr>
               </thead>
               <tbody>
-                <?php foreach($this->model->listar() as $alumno): ?>
-                  <tr>
-                    <td><?php echo $alumno->noCtrl; ?></td>
-                    <td><?php echo $alumno->nombre; ?></td>
-                    <td><?php echo $alumno->primerApellido; ?></td>
-                    <td><?php echo $alumno->segundoApellido; ?></td>
-                    <td><?php echo $alumno->grupo; ?></td>
-
-                  </tr>
-                <?php endforeach; ?>
+                <?php foreach ($this->model->listarCursos() as $curso): ?>
+                <tr>
+                  <td>ITZC<?php echo $curso->idCurso; ?></td> 
+                  <td><?php echo $curso->materia; ?></td>
+                  <td><?php echo $curso->nombre; ?></td>
+                  <td><?php echo $curso->periodo; ?></td>  
+                  <td><?php echo $curso->grupo; ?></td>  
+                  <td><?php echo $curso->horario; ?></td>  
+              </tr>
+            <?php endforeach; ?>
             </tbody>
             <tfoot>
               <tr>
-                <th>No. Ctrl</th>
-                <th>Nombre</th>
-                <th>Primer apellido</th>
-                <th>Segundo apellido</th>
-                <th>Grupo</th>
+                 <th>Clave de curso</th>
+                  <th>Materia</th>
+                  <th>Docente</th>
+                  <th>Periodo</th>
+                  <th>Grupo</th>
+                  <th>Horario</th>
               </th>
             </tr>
           </tfoot>

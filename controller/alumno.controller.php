@@ -33,6 +33,7 @@ class AlumnoController{
 		$alumno->segundoApellido=$_REQUEST['segundoApellido'];
 		$alumno->noCtrl=$_REQUEST['noCtrl'];
 		$alumno->idAlumno=$_REQUEST['idAlumno'];
+		$alumno->grupo=$_REQUEST['grupo'];
 
 		$this->model->Registrar($alumno);
 		$this->mensaje="El alumno se ha registrado correctamente";
