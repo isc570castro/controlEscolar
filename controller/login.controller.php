@@ -62,7 +62,7 @@ public function logout()
 }
 public function LoginAlumno(){
   header('Content-Type: application/json');
-  $noCtrl=$_REQUEST['username'];
+  $noCtrl=$_REQUEST['noCtrl'];
   $password=$_REQUEST['password'];
   $consulta=$this->model->VerificaAlumno($noCtrl,$password);
   $json=array();
