@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>AdminLTE 2 | Dashboard</title>
+  <title>ControlEscolar</title>
   <!-- Tell the browser to be responsive to screen width -->
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
   <!-- Bootstrap 3.3.7 -->
@@ -30,7 +30,7 @@
    <link rel="stylesheet" href="dist/bower_components/datatables.net-bs/css/dataTables.bootstrap.min.css">
    <link rel="stylesheet" href="dist/bower_components/select2/dist/css/select2.min.css">
    <link rel="stylesheet" href="dist/plugins/timepicker/bootstrap-timepicker.min.css">
-  <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+   <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
 
 
 <!-- AdminLTE Skins. Choose a skin from the css/skins
@@ -47,9 +47,10 @@
       <!-- Logo -->
       <a href="index2.html" class="logo">
         <!-- mini logo for sidebar mini 50x50 pixels -->
-        <span class="logo-mini"><b>A</b>LT</span>
+
+        <span class="logo-mini"><b>C</b>ITZ</span>
         <!-- logo for regular state and mobile devices -->
-        <span class="logo-lg"><b>Admin</b>LTE</span>
+        <span class="logo-lg"><b>Control</b>ITZ</span>
       </a>
       <!-- Header Navbar: style can be found in header.less -->
       <nav class="navbar navbar-static-top">
@@ -280,7 +281,7 @@
             <a href="#" class="btn btn-default btn-flat">Perfil</a>
           </div>
           <div class="pull-right">
-            <a href="#" class="btn btn-default btn-flat">Salir</a>
+            <a href="?c=Login&a=Logout" class="btn btn-default btn-flat">Salir</a>
           </div>
         </li>
       </ul>
@@ -299,10 +300,10 @@
     <!-- Sidebar user panel -->
     <div class="user-panel">
       <div class="pull-left image">
-        <img src="dist/img/user.png" class="img-circle" alt="User Image">
+        <img src="dist/img/logo.png" class="img-circle" alt="User Image">
       </div>
       <div class="pull-left info">
-        <p><?php if(isset($_SESSION['user'])) echo $_SESSION['user'];?></p>
+        <p><?php if(isset($_SESSION['usuario'])) echo $_SESSION['usuario'];?></p>
         <a href="#"><i class="fa fa-circle text-success"></i> En línea</a>
       </div>
     </div>
@@ -323,13 +324,15 @@
     <ul class="sidebar-menu" data-widget="tree">
       <li class="header">MAIN NAVIGATION</li>
       <li <?php if(isset($inicio)){ ?> class="active" <?php } ?>><a href="?c=inicio"><i class="fa fa-dashboard"></i> Inicio</a></li>
-      <li class=" treeview <?php if(isset($admin)){ ?> active <?php } ?>" >
+      <?php if (isset($_SESSION['tipo'])){ ?>
+      <li class=" treeview active" >
         <a href="#">
           <i class="fa  fa-folder"></i> <span>Administración</span>
           <span class="pull-right-container">
             <i class="fa fa-angle-left pull-right"></i>
           </span>
         </a>
+        
         <ul class="treeview-menu">
           <li <?php if(isset($docentes)){ ?> class="active" <?php } ?>><a  href="?c=Docente"><i class="fa fa-user"></i>Docentes</a></li>
           <li <?php if(isset($materias)){ ?> class="active" <?php } ?>><a  href="?c=Materia"><i class="fa fa-pencil-square-o"></i>Materias</a></li>
@@ -337,8 +340,10 @@
           <li <?php if(isset($cursos)){ ?> class="active" <?php } ?>><a  href="?c=Curso"><i class="fa fa-th-large"></i>Cursos</a></li>
           <li <?php if(isset($usuarios)){ ?> class="active" <?php } ?>><a  href="?c=Usuario"><i class="fa fa-users"></i>Usuarios</a></li>
         </ul>
-
+       
       </li>
+       <?php } ?>
+      <?php if (!isset($_SESSION['tipo'])){ ?>
       <li <?php if(isset($cursos2)){ ?> class="active" <?php } ?>>
         <a href="?c=Curso&a=Seleccion">
           <i class="fa  fa-th-large"></i> <span>Cursos</span>
@@ -349,6 +354,7 @@
           <i class="fa fa-list-alt"></i> <span>Listas</span>
         </a>
       </li>
+      <?php } ?>
     </ul>
   </section>
   <!-- /.sidebar -->

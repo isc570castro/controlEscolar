@@ -36,7 +36,7 @@
 
             <div class="form-group">
              <label for="txtNombre">Número de control</label>
-             <input name="noCtrl" class="form-control" id="txtNombre" value="13450570" required readonly>
+             <input name="noCtrl" class="form-control" id="txtNombre" placeholder="Ingrese el número de control del alumno" required>
            </div><!-- /.form-group -->
          </div>
          <div class="col-md-6">

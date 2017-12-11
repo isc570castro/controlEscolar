@@ -22,7 +22,7 @@ class Usuario
 	{
 		try 
 		{
-			$sql = "INSERT INTO usuarios VALUES (null,?,?,?)";
+			$sql = "INSERT INTO usuariosdocentes VALUES (null,?,?,?)";
 
 			$this->pdo->prepare($sql)
 			->execute(

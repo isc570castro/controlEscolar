@@ -35,7 +35,7 @@ class Login
 	{
 		try 
 		{
-			$sql= $this->pdo->prepare("SELECT * FROM usuariosDocentes WHERE usuario=?");
+			$sql= $this->pdo->prepare("SELECT * FROM usuariosDocentes,docentes WHERE usuario=? AND usuariosDocentes.idDocente=docentes.idDocente");
 			$resultado=$sql->execute(
 				array(
                     $data->usuario,
@@ -64,5 +64,13 @@ class Login
 			die($e->getMessage());
 		}
 	}
+	public function logout()
+{
+  session_destroy();
+  unset($_SESSION['docente']);
+  unset($_SESSION['usuario']);
+  unset($_SESSION['seguridad']);
+  header ('Location: index.php');
+}
 }
 ?>
