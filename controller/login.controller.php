@@ -67,19 +67,15 @@ public function LoginAlumno(){
   $consulta=$this->model->VerificaAlumno($noCtrl,$password);
   $json=array();
   if (!$consulta==null) {
-    $row_array['success']=true;
-    $row_array['noCtrl']=$consulta->noCtrl;
-    $row_array['nombre']=$consulta->nombre;
-    $row_array['primerApellido']=$consulta->primerApellido;
-    $row_array['segundoApellido']=$consulta->segundoApellido;
-    $row_array['grupo']=$consulta->grupo;
-
-
-    array_push($json, $row_array);
+    $json['success']=true;
+    $json['noCtrl']=$consulta->noCtrl;
+    $json['nombre']=$consulta->nombre;
+    $json['primerApellido']=$consulta->primerApellido;
+    $json['segundoApellido']=$consulta->segundoApellido;
+    $json['grupo']=$consulta->grupo;
   }else{
-    $row_array['mensaje']='fail';
-    array_push($json, $row_array);
+    $json['mensaje']='fail';
   }
-  echo json_encode($json, JSON_FORCE_OBJECT);
+  echo json_encode($json);
 }
 }
