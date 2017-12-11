@@ -18,7 +18,7 @@
 
             <div class="col-md-9">
               <div class="box-header">
-                <h3 class="box-title">Datos generales de los alumnos activos</h3>
+                <h3 class="box-title">Datos generales de las materias activas</h3>
               </div>
             </div>              
             <div class="col-md-3">
