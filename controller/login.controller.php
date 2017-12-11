@@ -74,7 +74,7 @@ public function LoginAlumno(){
     $json['segundoApellido']=$consulta->segundoApellido;
     $json['grupo']=$consulta->grupo;
   }else{
-    $json['mensaje']='fail';
+    $json['success']=false;
   }
   echo json_encode($json);
 }
