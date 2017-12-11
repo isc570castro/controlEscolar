@@ -332,17 +332,15 @@
             <i class="fa fa-angle-left pull-right"></i>
           </span>
         </a>
-        
         <ul class="treeview-menu">
           <li <?php if(isset($docentes)){ ?> class="active" <?php } ?>><a  href="?c=Docente"><i class="fa fa-user"></i>Docentes</a></li>
           <li <?php if(isset($materias)){ ?> class="active" <?php } ?>><a  href="?c=Materia"><i class="fa fa-pencil-square-o"></i>Materias</a></li>
           <li <?php if(isset($alumnos)){ ?> class="active" <?php } ?>><a  href="?c=Alumno"><i class="fa fa-male"></i>Alumnos</a></li>
           <li <?php if(isset($cursos)){ ?> class="active" <?php } ?>><a  href="?c=Curso"><i class="fa fa-th-large"></i>Cursos</a></li>
           <li <?php if(isset($usuarios)){ ?> class="active" <?php } ?>><a  href="?c=Usuario"><i class="fa fa-users"></i>Usuarios</a></li>
-        </ul>
-       
+        </ul>  
       </li>
-       <?php } ?>
+      <?php } ?>
       <?php if (!isset($_SESSION['tipo'])){ ?>
       <li <?php if(isset($cursos2)){ ?> class="active" <?php } ?>>
         <a href="?c=Curso&a=Seleccion">

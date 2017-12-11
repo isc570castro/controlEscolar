@@ -19,7 +19,7 @@
 
               <div class="col-md-9">
                 <div class="box-header">
-                  <h3 class="box-title">Datos generales de los cursos activos</h3>
+                  <h3 class="box-title"><strong>Materia:</strong>&nbsp;<?php echo $info->materia;?>&nbsp; <strong>Docente:</strong>&nbsp;<?php echo $info->nombre." ".$info->primerApellido." ".$info->segundoApellido;?>&nbsp; <strong>Grupo: </strong>&nbsp;<?php echo $info->grupo;?></h3>
                 </div>
               </div>              
               <div class="col-md-3">
@@ -27,7 +27,7 @@
                   <b>
 
                     <div class="btn-group" style="margin-right: 10px; margin-top: 10px;"> 
-                      <a style="width: 150px" class="btn btn-sm btn-default tooltips" href="?c=Curso&a=Crud" data-toggle="tooltip" data-placement="bottom" data-original-title="Registrar nuevo curso"> <i class="fa fa-plus"></i> Registrar </a>
+                      <button type="button" data-toggle="modal" data-target="#modal-registrar" style="width: 150px" class="btn btn-sm btn-registrar tooltips"  data-toggle="tooltip" data-placement="bottom" data-original-title="Registrar nueva materia"> <i class="fa fa-plus"></i> Registrar </button>
                     </div>
 
                   </b>
@@ -53,37 +53,22 @@
              <table id="example1" class="table table-bordered table-striped">
               <thead>
                 <tr>
-                  <th>Clave de curso</th>
-                  <th>Materia</th>
-                  <th>Docente</th>
-                  <th>Periodo</th>
-                  <th>Grupo</th>
-                  <th>Horario</th>
-                  <th>Carga</th>
+                  <th>NoCtrl</th>
+                  <th>Nombre</th>
                 </tr>
               </thead>
               <tbody>
-                <?php foreach ($this->model->listarCursos() as $curso): ?>
+                <?php foreach ($this->model->listarAlumnosCurso($curso->idCurso) as $alumno): ?>
                 <tr>
-                  <td>ITZC<?php echo $curso->idCurso; ?></td> 
-                  <td><?php echo $curso->materia; ?></td>
-                  <td><?php echo $curso->nombre; ?></td>
-                  <td><?php echo $curso->periodo; ?></td>  
-                  <td><?php echo $curso->grupo; ?></td>  
-                  <td><?php echo $curso->horario; ?></td>  
-                  <td align="center"><a style="width: 50px;" href="?c=Curso&a=Carga&idCurso=<?php echo $curso->idCurso;?>" type="button" class="btn btn-block btn-success btn-xs"><i class="fa fa-external-link"></i></a></td>  
+                  <td><?php echo $alumno->noCtrl; ?></td> 
+                  <td><?php echo $alumno->nombre." ".$alumno->primerApellido." ".$alumno->segundoApellido; ?></td>
               </tr>
             <?php endforeach; ?>
             </tbody>
             <tfoot>
               <tr>
-                 <th>Clave de curso</th>
-                  <th>Materia</th>
-                  <th>Docente</th>
-                  <th>Periodo</th>
-                  <th>Grupo</th>
-                  <th>Horario</th>
-                  <th>Carga</th>
+                  <th>NoCtrl</th>
+                  <th>Nombre</th>
               </th>
             </tr>
           </tfoot>
@@ -116,6 +101,38 @@
       </div><!-- /.modal-content -->
     </div><!-- /.modal-dialog -->
   </div><!-- /.modal -->
+  <!-- /.content -->
+ <div class="modal fade" id="modal-registrar">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <form action="?c=Materia&a=Guardar" method="POST">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span></button>
+            <h3 class="modal-title">Registrar alumno al curso</h3>
+          </div>
+          <div class="modal-body">
+
+            <div class="form-group">
+             <label for="txtCodigoUsuario">Alumno</label>
+             <select name="idDocente" type="text" class="form-control select2" id="selectMateria">
+          <option value="A">Seleccione el alumno a asignar</option>
+          <?php foreach($modelAlumno->Listar() as $alumno): ?>
+            <option value="<?php echo $alumno->noCtrl?>"><?php echo $alumno->nombre." ".$alumno->primerApellido." ".$alumno->alumno; ?></option>
+          <?php endforeach;?>
+        </select>
+           </div><!-- /.form-group -->
+
+         </div>
+         <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+          <button type="submit" class="btn btn-primary">Aceptar</a>
+          </div>
+        </form>
+      </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+  </div><!-- /.modal -->
+
   <script>
     $(document).ready(function(){
       $('[data-toggle="tooltip"]').tooltip(); 

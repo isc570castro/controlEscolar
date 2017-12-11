@@ -26,6 +26,11 @@
 				<img width="50%" src="dist/img/logo.png" alt="" />
 				<h4>Accede con tu cuenta</h4>
 			</div>			
+			 <?php if(isset($error)){ ?>
+          <div class="alert alert-danger" style="height: 10px; margin-bottom: -10px; margin-top: -10px;">
+            <p style="margin-top:-20px;"><?php echo $error;?></p>
+          </div>
+          <?php } ?>
 			<input type="text" name="usuario" placeholder="Usuario" required class="form-control input-lg" />
 			<input type="password" name="password" placeholder="Contraseña" required class="form-control input-lg" />
 			<button type="submit" name="go" class="btn btn-lg btn-block btn-info">Acceder</button>

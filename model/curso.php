@@ -74,5 +74,36 @@ class Curso
 			die($e->getMessage());
 		}
 	}
+		//Metdodo para listar
+	public function ListarAlumnosCurso($idCurso)
+	{
+		try
+		{
+			$stm = $this->pdo->prepare("SELECT * FROM cursos_alumnos WHERE idCurso=?");
+			
+			$stm->execute(array($idCurso));
+
+			return $stm->fetchAll(PDO::FETCH_OBJ);
+		}
+		catch(Exception $e)
+		{
+			die($e->getMessage());
+		}
+	}
+	public function InfoCurso($idCurso)
+	{
+		try
+		{
+			$stm = $this->pdo
+			->prepare("SELECT * FROM cursos, materias, docentes WHERE idCurso = ? AND cursos.claveMateria=materias.claveMateria AND cursos.idDocente=docentes.idDocente");
+			$stm->execute(array($idCurso));
+			return $stm->fetch(PDO::FETCH_OBJ);
+		}
+		catch(Exception $e)
+		{
+			die($e->getMessage());
+		}
+	}
+
 }
 ?>

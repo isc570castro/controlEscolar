@@ -2,6 +2,8 @@
 require_once 'model/curso.php';
 require_once 'model/docente.php';
 require_once 'model/materia.php';
+require_once 'model/alumno.php';
+
 
 class CursoController{
 
@@ -43,6 +45,15 @@ class CursoController{
 	public function Seleccion(){
 		$cursos2=true;
 		$page="view/cursos/seleccion.php";
+		require_once 'view/index.php';
+	}
+	public function Carga(){
+		$curso = new Curso;
+		$modelAlumno=new Alumno();
+		$curso->idCurso=$_REQUEST['idCurso'];
+		$info=$this->model->InfoCurso($curso->idCurso);
+		$cursos=true;
+		$page="view/cursos/carga.php";
 		require_once 'view/index.php';
 	}
 }

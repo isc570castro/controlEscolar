@@ -26,11 +26,11 @@ class LoginController{
         $this->login($usuario,$password,$docente,$consulta->idDocente);
         header ('Location: index.php?c=Inicio');
       }else{
-        $error="  La contraseña es incorrrecta";
+        $error="Acceso incorrecto";
         require_once 'view/login.php';
       }
     }else{
-     $error="  El usuario es incorrecto";
+     $error="Acceso incorrecto";
      require_once 'view/login.php';
    } 
  }
