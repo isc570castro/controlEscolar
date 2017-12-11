@@ -59,21 +59,6 @@ class Alumno
 			die($e->getMessage());
 		}
 	}
-		//Metdodo para listar
-	public function ListarAlumnos($idCurso)
-	{
-		try
-		{
-			$stm = $this->pdo->prepare("SELECT * FROM cursos_alumnos WHERE idCurso=?");
-			
-			$stm->execute(array($idCurso));
-
-			return $stm->fetchAll(PDO::FETCH_OBJ);
-		}
-		catch(Exception $e)
-		{
-			die($e->getMessage());
-		}
-	}
+	
 }
 ?>

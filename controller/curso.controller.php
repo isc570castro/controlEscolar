@@ -48,8 +48,8 @@ class CursoController{
 		require_once 'view/index.php';
 	}
 	public function Carga(){
-		$curso = new Curso;
-		$modelAlumno=new Alumno();
+		$curso = new Curso();
+		$modelAlumno = new Alumno();
 		$curso->idCurso=$_REQUEST['idCurso'];
 		$info=$this->model->InfoCurso($curso->idCurso);
 		$cursos=true;

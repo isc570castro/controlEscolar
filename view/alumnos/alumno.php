@@ -36,7 +36,7 @@
 
             <div class="form-group">
              <label for="txtNombre">Número de control</label>
-             <input name="noCtrl" class="form-control" id="txtNombre" placeholder="Ingrese el número de control del alumno" required>
+             <input name="noCtrl" class="form-control" id="txtNombre" placeholder="Ingrese el número de control del alumno" required autofocus>
            </div><!-- /.form-group -->
          </div>
          <div class="col-md-6">
@@ -54,7 +54,7 @@
        </div>
        <div class="form-group">
          <label for="txtNombre">Nombre</label>
-         <input name="nombre" class="form-control" id="txtNombre" placeholder="Ingrese el nombre del alumno" required autofocus>
+         <input name="nombre" class="form-control" id="txtNombre" placeholder="Ingrese el nombre del alumno" required>
        </div><!-- /.form-group -->
        <div class="row">
         <div class="col-md-6">
