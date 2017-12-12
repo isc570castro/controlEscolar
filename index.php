@@ -1,12 +1,11 @@
 <?php
 session_start();
-<<<<<<< HEAD
+
 $_SESSION['idDocente']=1;
 $_SESSION['docente']="Luis Enrique Marquez Soto";
 $_SESSION['user']="lemarquez";
 $_SESSION['idCurso']=2;
-=======
->>>>>>> 5aa9fbd815df7109ef463244b80be65f9cc7c3f8
+
 //error_reporting(ERROR_REPORTING_LEVEL);
 require_once 'model/conexion.php';
 $controller = 'login';
