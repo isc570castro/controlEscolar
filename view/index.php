@@ -322,9 +322,9 @@
     <!-- sidebar menu: : style can be found in sidebar.less -->
     <ul class="sidebar-menu" data-widget="tree">
       <li class="header">MAIN NAVIGATION</li>
-       <?php if (isset($_SESSION['tipo'])){ ?>
+      <?php if (isset($_SESSION['tipo'])){ ?>
       <li <?php if(isset($inicio)){ ?> class="active" <?php } ?>><a href="?c=inicio"><i class="fa fa-dashboard"></i> Inicio</a></li>
-     
+
       <li class=" treeview active" >
         <a href="#">
           <i class="fa  fa-folder"></i> <span>Administración</span>
@@ -337,18 +337,20 @@
           <li <?php if(isset($materias)){ ?> class="active" <?php } ?>><a  href="?c=Materia"><i class="fa fa-pencil-square-o"></i>Materias</a></li>
           <li <?php if(isset($alumnos)){ ?> class="active" <?php } ?>><a  href="?c=Alumno"><i class="fa fa-male"></i>Alumnos</a></li>
           <li <?php if(isset($cursos)){ ?> class="active" <?php } ?>><a  href="?c=Curso"><i class="fa fa-th-large"></i>Cursos</a></li>
-           <li class=" treeview <?php if(isset($usuarios)){ ?> active <?php } ?>">
-              <a href="#"><i class="fa fa-users"></i>Usuarios
-                <span class="pull-right-container">
-                  <i class="fa fa-angle-left pull-right"></i>
-                </span>
-              </a>
-              <ul class="treeview-menu">
-                <li><a href="?c=Usuario&a=Docentes"><i class="fa fa-circle-o"></i> Docentes</a></li>
-                <li><a href="?c=Usuario"><i class="fa fa-circle-o"></i> Alumnos</a></li>
-              </ul>
-            </li>
+
+          <li class=" treeview <?php if(isset($usuarios)){ ?> active <?php } ?>">
+            <a href="#"><i class="fa fa-users"></i>Usuarios
+              <span class="pull-right-container">
+                <i class="fa fa-angle-left pull-right"></i>
+              </span>
+            </a>
+            <ul class="treeview-menu">
+              <li><a href="?c=Usuario&a=Docentes"><i class="fa fa-circle-o"></i> Docentes</a></li>
+              <li><a href="?c=Usuario"><i class="fa fa-circle-o"></i> Alumnos</a></li>
+            </ul>
+          </li>
         </ul>  
+
       </li>
       <?php } ?>
       <?php if (!isset($_SESSION['tipo'])){ ?>
@@ -357,14 +359,12 @@
           <i class="fa  fa-th-large"></i> <span>Cursos</span>
         </a>
       </li>
+
       <?php if(isset($_SESSION['idCurso'])){ ?>
-      <li <?php if(isset($ayudas)){ ?> class="active" <?php } ?>>
-        <a href="?c=ayuda">
-          <i class="fa fa-list-alt"></i> <span>Listas</span>
-        </a>
-      </li>
-      <?php } ?>
-      <?php } ?>
+      <li <?php if(isset($listas)){ ?> class="active" <?php } ?>><a href="?c=Alumno&a=Seleccion"><i class="fa fa-list-alt"></i> Listas</a></li>
+      <?php } } ?>
+
+
     </ul>
   </section>
   <!-- /.sidebar -->

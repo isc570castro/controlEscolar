@@ -1,5 +1,6 @@
 <?php
 session_start();
+
 //error_reporting(ERROR_REPORTING_LEVEL);
 require_once 'model/conexion.php';
 $controller = 'login';

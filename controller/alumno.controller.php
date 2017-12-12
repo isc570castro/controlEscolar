@@ -40,5 +40,24 @@ class AlumnoController{
 		$this->Index();
 	}
 
+	public function Seleccion(){
+		$listas=true;
+		$page="view/alumnos/listas.php";
+		require_once 'view/index.php';
+	}
+	public function ActualizarCalificaciones(){
+		//$noUnidades=$_POST['noUnidades'];
+		$noCtrl=$_REQUEST['txtnoCtrl'];
+		if($noUnidades=1){
+			for ($i=1; $i <= 4; $i++) { 
+				$u='calificacion'.$i;
+				$unidadn=$_REQUEST[$u];
+				$this->model->RegistrarCalificacion($i,$unidadn,$noCtrl);
+			}
+		}
+		$this->mensaje="Succes";
+		$this->Index();
+	}
+
 }
 ?>
