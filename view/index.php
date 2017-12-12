@@ -270,8 +270,7 @@
           <img src="dist/img/user.png" class="img-circle" alt="User Image">
 
           <p>
-            <?php if(isset($_SESSION['docente'])) echo $_SESSION['docente'];?> - Web Developer
-            <small>Member since Nov. 2012</small>
+            <?php if(isset($_SESSION['docente'])) echo $_SESSION['docente'];?> 
           </p>
         </li>
 
@@ -323,8 +322,9 @@
     <!-- sidebar menu: : style can be found in sidebar.less -->
     <ul class="sidebar-menu" data-widget="tree">
       <li class="header">MAIN NAVIGATION</li>
+       <?php if (isset($_SESSION['tipo'])){ ?>
       <li <?php if(isset($inicio)){ ?> class="active" <?php } ?>><a href="?c=inicio"><i class="fa fa-dashboard"></i> Inicio</a></li>
-      <?php if (isset($_SESSION['tipo'])){ ?>
+     
       <li class=" treeview active" >
         <a href="#">
           <i class="fa  fa-folder"></i> <span>Administración</span>
