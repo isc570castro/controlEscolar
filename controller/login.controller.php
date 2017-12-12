@@ -24,7 +24,7 @@ class LoginController{
       if($consulta->password == $password){
         $docente=$consulta->nombre." ".$consulta->primerApellido." ".$consulta->segundoApellido;
         $this->login($usuario,$password,$docente,$consulta->idDocente);
-        header ('Location: index.php?c=Inicio');
+        header ('Location: index.php?c=Curso&a=Seleccion');
       }else{
         $error="Acceso incorrecto";
         require_once 'view/login.php';
