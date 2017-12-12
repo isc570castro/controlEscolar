@@ -337,10 +337,7 @@
           <li <?php if(isset($materias)){ ?> class="active" <?php } ?>><a  href="?c=Materia"><i class="fa fa-pencil-square-o"></i>Materias</a></li>
           <li <?php if(isset($alumnos)){ ?> class="active" <?php } ?>><a  href="?c=Alumno"><i class="fa fa-male"></i>Alumnos</a></li>
           <li <?php if(isset($cursos)){ ?> class="active" <?php } ?>><a  href="?c=Curso"><i class="fa fa-th-large"></i>Cursos</a></li>
-<<<<<<< HEAD
-          <li <?php if(isset($usuarios)){ ?> class="active" <?php } ?>><a  href="?c=Usuario"><i class="fa fa-users"></i>Usuarios</a></li>
-        </ul>
-=======
+
            <li class=" treeview <?php if(isset($usuarios)){ ?> active <?php } ?>">
               <a href="#"><i class="fa fa-users"></i>Usuarios
                 <span class="pull-right-container">
@@ -353,7 +350,7 @@
               </ul>
             </li>
         </ul>  
->>>>>>> 5aa9fbd815df7109ef463244b80be65f9cc7c3f8
+
       </li>
       <?php } ?>
       <?php if (!isset($_SESSION['tipo'])){ ?>
@@ -362,17 +359,12 @@
           <i class="fa  fa-th-large"></i> <span>Cursos</span>
         </a>
       </li>
-<<<<<<< HEAD
+
       <li <?php if(isset($listas)){ ?> class="active" <?php } ?>><a href="?c=Alumno&a=Seleccion"><i class="fa fa-list-alt"></i> Listas</a></li>
      
-=======
-      <li <?php if(isset($ayudas)){ ?> class="active" <?php } ?>>
-        <a href="?c=ayuda">
-          <i class="fa fa-list-alt"></i> <span>Listas</span>
-        </a>
-      </li>
+
       <?php } ?>
->>>>>>> 5aa9fbd815df7109ef463244b80be65f9cc7c3f8
+
     </ul>
   </section>
   <!-- /.sidebar -->
