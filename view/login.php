@@ -34,7 +34,6 @@
 			<input type="text" name="usuario" placeholder="Número de control" required class="form-control input-lg" />
 			<input type="password" name="password" placeholder="Contraseña" required class="form-control input-lg" />
 			<button type="submit" name="go" class="btn btn-lg btn-block btn-info">Acceder</button>
-
 		</form>
 		</section>
 	</section>

@@ -39,5 +39,6 @@ class AlumnoController{
 		$this->mensaje="El alumno se ha registrado correctamente";
 		$this->Index();
 	}
+
 }
 ?>
