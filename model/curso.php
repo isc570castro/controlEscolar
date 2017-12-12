@@ -79,7 +79,7 @@ class Curso
 	{
 		try
 		{
-			$stm = $this->pdo->prepare("SELECT * FROM cursos_alumnos WHERE idCurso=?");
+			$stm = $this->pdo->prepare("SELECT * FROM cursos_alumnos, alumnos WHERE idCurso=? AND cursos_alumnos.noCtrl=alumnos.noCtrl");
 			
 			$stm->execute(array($idCurso));
 
@@ -100,6 +100,26 @@ class Curso
 			return $stm->fetch(PDO::FETCH_OBJ);
 		}
 		catch(Exception $e)
+		{
+			die($e->getMessage());
+		}
+	}
+		//Metdod para registrar
+	public function AsignarAlumno($noCtrl,$idCurso)
+	{
+		try 
+		{
+			$sql = "INSERT INTO cursos_alumnos VALUES (?,?,?,null)";
+
+			$this->pdo->prepare($sql)
+			->execute(
+				array(
+					null,
+					$idCurso,
+					$noCtrl
+				)
+			);
+		} catch (Exception $e) 
 		{
 			die($e->getMessage());
 		}

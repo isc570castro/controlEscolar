@@ -105,7 +105,7 @@
  <div class="modal fade" id="modal-registrar">
   <div class="modal-dialog">
     <div class="modal-content">
-      <form action="?c=Materia&a=Guardar" method="POST">
+      <form action="?c=Curso&a=AsignaAlumno&idCurso=<?php echo $curso->idCurso ?>" method="POST">
         <div class="modal-header">
           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">&times;</span></button>
@@ -115,10 +115,10 @@
 
             <div class="form-group">
              <label for="txtCodigoUsuario">Alumno</label>
-             <select name="idDocente" type="text" class="form-control select2" id="selectMateria">
+             <select name="noCtrl" type="text" class="form-control select2" id="selectMateria">
           <option value="A">Seleccione el alumno a asignar</option>
           <?php foreach($modelAlumno->Listar() as $alumno): ?>
-            <option value="<?php echo $alumno->noCtrl?>"><?php echo $alumno->nombre." ".$alumno->primerApellido." ".$alumno->alumno; ?></option>
+            <option value="<?php echo $alumno->noCtrl;?>"><?php echo $alumno->nombre." ".$alumno->primerApellido." ".$alumno->segundoApellido; ?></option>
           <?php endforeach;?>
         </select>
            </div><!-- /.form-group -->

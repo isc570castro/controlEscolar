@@ -56,5 +56,13 @@ class CursoController{
 		$page="view/cursos/carga.php";
 		require_once 'view/index.php';
 	}
+	public function AsignaAlumno(){
+		$curso= new Curso();
+		$noCtrl=$_REQUEST['noCtrl'];
+		$idCurso=$_REQUEST['idCurso'];
+		$this->model->AsignarAlumno($noCtrl,$idCurso);
+		$this->mensaje="El alumno se ha asignado correctamente al curso";
+		$this->Carga();
+	}
 }
 ?>
