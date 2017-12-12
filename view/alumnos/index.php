@@ -61,7 +61,7 @@
                 </tr>
               </thead>
               <tbody>
-                <?php foreach($this->model->listarL() as $alumno): ?>
+                <?php foreach($this->model->Listar() as $alumno): ?>
                   <tr>
                     <td><?php echo $alumno->noCtrl; ?></td>
                     <td><?php echo $alumno->nombre; ?></td>
