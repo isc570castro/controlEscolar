@@ -8,7 +8,7 @@ $password=$_REQUEST["password"];
 //$sql="SELCT * FROM usuarios WHERE username=? AND password=?";
 //$result=mysql_query($sql, $con) or die ('Unable to run query:'.mysql_error());
 
-$statement=mysqli_prepare($con, "SELECT alumnos.noCtrl, alumnos.nombre, alumnos.primerApellido,alumnos.segundoApellido, alumnos.grupo FROM usuariosalumnos,alumnos WHERE usuariosalumnos.noCtrl=? AND usuariosalumnos.password=? AND usuariosalumnos.noCtrl=alumnos.noCtrl");
+$statement=mysqli_prepare($con, "SELECT alumnos.noCtrl, alumnos.nombre, alumnos.primerApellido,alumnos.segundoApellido, alumnos.grupo FROM usuariosalumnos,alumnos WHERE usuariosalumnos.noCtrl=? AND password=? AND usuariosalumnos.noCtrl=alumnos.noCtrl");
 mysqli_stmt_bind_param($statement, "ss", $noCtrl, $password);
 mysqli_stmt_execute($statement);
 mysqli_stmt_store_result($statement);

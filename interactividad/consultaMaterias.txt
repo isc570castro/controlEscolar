@@ -1,0 +1,1 @@
+select cursos.periodo,materias.materia,docentes.nombre, cursos_alumnos.calificacions from materias, cursos, cursos_alumnos, alumnos, where alumnos.noCtrl=cursos_alumnos.noCtrl, materias.claveMateria=cursos.claveMateria and cursos.idCurso=cursos_alumnos.idCurso and cursos.idDocente=docentes.idDocente;
