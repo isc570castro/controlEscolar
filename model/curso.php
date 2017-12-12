@@ -74,5 +74,56 @@ class Curso
 			die($e->getMessage());
 		}
 	}
+		//Metdodo para listar
+	public function ListarAlumnosCurso($idCurso)
+	{
+		try
+		{
+			$stm = $this->pdo->prepare("SELECT * FROM cursos_alumnos, alumnos WHERE idCurso=? AND cursos_alumnos.noCtrl=alumnos.noCtrl");
+			
+			$stm->execute(array($idCurso));
+
+			return $stm->fetchAll(PDO::FETCH_OBJ);
+		}
+		catch(Exception $e)
+		{
+			die($e->getMessage());
+		}
+	}
+	public function InfoCurso($idCurso)
+	{
+		try
+		{
+			$stm = $this->pdo
+			->prepare("SELECT * FROM cursos, materias, docentes WHERE idCurso = ? AND cursos.claveMateria=materias.claveMateria AND cursos.idDocente=docentes.idDocente");
+			$stm->execute(array($idCurso));
+			return $stm->fetch(PDO::FETCH_OBJ);
+		}
+		catch(Exception $e)
+		{
+			die($e->getMessage());
+		}
+	}
+		//Metdod para registrar
+	public function AsignarAlumno($noCtrl,$idCurso)
+	{
+		try 
+		{
+			$sql = "INSERT INTO cursos_alumnos VALUES (?,?,?,null)";
+
+			$this->pdo->prepare($sql)
+			->execute(
+				array(
+					null,
+					$idCurso,
+					$noCtrl
+				)
+			);
+		} catch (Exception $e) 
+		{
+			die($e->getMessage());
+		}
+	}
+
 }
 ?>

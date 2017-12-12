@@ -39,6 +39,7 @@ class AlumnoController{
 		$this->mensaje="El alumno se ha registrado correctamente";
 		$this->Index();
 	}
+
 	public function Seleccion(){
 		$listas=true;
 		$page="view/alumnos/listas.php";
@@ -57,5 +58,6 @@ class AlumnoController{
 		$this->mensaje="Succes";
 		$this->Index();
 	}
+
 }
 ?>

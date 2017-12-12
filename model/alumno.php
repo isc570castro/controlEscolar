@@ -60,6 +60,7 @@ class Alumno
 			die($e->getMessage());
 		}
 	}
+
 	public function ListarL()
 	{
 		try
@@ -126,5 +127,6 @@ class Alumno
 			die($e->getMessage());
 		}
 	}
+
 }
 ?>
