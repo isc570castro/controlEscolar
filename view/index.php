@@ -357,11 +357,13 @@
           <i class="fa  fa-th-large"></i> <span>Cursos</span>
         </a>
       </li>
+      <?php if(isset($_SESSION['idCurso'])){ ?>
       <li <?php if(isset($ayudas)){ ?> class="active" <?php } ?>>
         <a href="?c=ayuda">
           <i class="fa fa-list-alt"></i> <span>Listas</span>
         </a>
       </li>
+      <?php } ?>
       <?php } ?>
     </ul>
   </section>

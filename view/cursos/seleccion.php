@@ -1,14 +1,6 @@
 
 <section class="content-header">
-  <h1>
-    Data Tables
-    <small>advanced tables</small>
-  </h1>
-  <ol class="breadcrumb">
-    <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
-    <li><a href="#">Tables</a></li>
-    <li class="active">Data tables</li>
-  </ol>
+
 </section>
 
 <section class="content">
@@ -18,7 +10,7 @@
   <?php foreach($this->model->listarCursos2($_SESSION['idDocente']) as $curso): ?>
     <div class="col-lg-3 col-xs-6">
       <!-- small box -->
-      <div class="small-box bg-aqua">
+      <div class="small-box <?php if(isset($_SESSION['idCurso'])){ if($curso->idCurso==$_SESSION['idCurso']){ ?>bg-green <?php }else{ ?> bg-aqua<?php }}else{ ?> bg-aqua <?php } ?>">
         <div class="inner">
           <h4><b><?php echo $curso->materia; ?></b></h4>
           <p><b>Grupo</b> <?php echo $curso->grupo; ?></p>
@@ -27,9 +19,17 @@
         <div class="icon">
           <i class="ion ion-stats-bars"></i>
         </div>
-        <a href="#" class="small-box-footer">Activar&nbsp;<i class="fa   fa-check-circle"></i></a>
+
+        <?php if(isset($_SESSION['idCurso'])){ 
+          if($curso->idCurso==$_SESSION['idCurso']){ ?>
+          <a href="?c=Curso&a=DesactivarMateria&claveMateria=<?php echo $curso->claveMateria; ?>&materia=<?php echo $curso->materia; ?>&idCurso=<?php echo $curso->idCurso; ?>" class="small-box-footer">Desactivar&nbsp;<i class="fa   fa-check-circle-o"></i></a>
+          <?php }else{ ?>
+          <a href="?c=Curso&a=ActivarMateria&claveMateria=<?php echo $curso->claveMateria; ?>&materia=<?php echo $curso->materia; ?>&idCurso=<?php echo $curso->idCurso; ?>" class="small-box-footer">Activar&nbsp;<i class="fa   fa-check-circle"></i></a> 
+          <?php }}else{ ?>
+          <a href="?c=Curso&a=ActivarMateria&claveMateria=<?php echo $curso->claveMateria; ?>&materia=<?php echo $curso->materia; ?>&idCurso=<?php echo $curso->idCurso; ?>" class="small-box-footer">Activar&nbsp;<i class="fa   fa-check-circle"></i></a> 
+          <?php } ?>
+        </div>
       </div>
-    </div>
-    
-  <?php endforeach; ?>
-</section>
+
+    <?php endforeach; ?>
+  </section>

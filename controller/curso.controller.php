@@ -64,5 +64,20 @@ class CursoController{
 		$this->mensaje="El alumno se ha asignado correctamente al curso";
 		$this->Carga();
 	}
+	public function ActivarMateria(){
+		unset($_SESSION['claveMateria']);
+		unset($_SESSION['materia']);
+		unset($_SESSION['idCurso']);
+		$_SESSION['claveMateria']=$_REQUEST['claveMateria'];
+		$_SESSION['materia']=$_REQUEST['materia'];
+		$_SESSION['idCurso']=$_REQUEST['idCurso'];
+		$this->Seleccion();
+	}
+		public function DesactivarMateria(){
+		unset($_SESSION['claveMateria']);
+		unset($_SESSION['materia']);
+		unset($_SESSION['idCurso']);
+		$this->Seleccion();
+	}
 }
 ?>
