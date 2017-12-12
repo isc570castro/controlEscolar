@@ -361,7 +361,7 @@
       </li>
 
       <?php if(isset($_SESSION['idCurso'])){ ?>
-      <li <?php if(isset($listas)){ ?> class="active" <?php } ?>><a href="?c=Alumno&a=Seleccion"><i class="fa fa-list-alt"></i> Listas</a></li>
+      <li <?php if(isset($listas)){ ?> class="active" <?php } ?>><a href="?c=Curso&a=Listas"><i class="fa fa-list-alt"></i> Listas</a></li>
       <?php } } ?>
 
 

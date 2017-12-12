@@ -42,7 +42,7 @@
             <tr>
               <th>No. Ctrl</th>
               <th>Nombre</th>
-              <?php foreach($this->model->ListarU() as $unidades): ?>
+              <?php foreach($this->model->ListarUnidades($_SESSION['claveMateria']) as $unidades): ?>
                 <th><?php echo "Unidad"." ".$unidades->noUnidad; ?></th>
               <?php endforeach; ?>
               <th>Calificacion final</th>
@@ -50,17 +50,17 @@
             </tr>
           </thead>
           <tbody>
-            <?php foreach($this->model->listarL() as $alumno): ?>
+            <?php foreach($this->model->ListarAlumnosCurso($_SESSION['idCurso']) as $alumno): ?>
               <tr>
                 <td><?php echo $alumno->noCtrl; ?></td>
                 <td><?php echo $alumno->nombre." ".$alumno->primerApellido." ".$alumno->segundoApellido; ?></td>
-               <td></td>
-               <td></td>
-               <td></td>
-               <td></td>
-               <td></td>
-               
-               
+
+                <?php 
+                foreach ($this->model->Listar($idCursoAlumno) as $calificacion):
+                foreach ($this->model->ListasrCalificaciones($idCursoAlumno) as $calificacion): ?>
+                      <td>1</td>
+                <?php endforeach; 
+                endforeach; ?>
                 
                <td align="center"> <button style="width: 50%" type="button" data-toggle="modal" data-target="#modal-califunidades" onclick="califunidades(<?php echo $r->noCtrl;?>);" class="btn btn-sm btn-success "><i class="fa fa-edit"></i></button></td>
 
@@ -71,7 +71,7 @@
             <tr>
               <th>No. Ctrl</th>
               <th>Nombre</th>
-              <?php foreach($this->model->listarU() as $unidades): ?>
+               <?php foreach($this->model->ListarUnidades($_SESSION['claveMateria']) as $unidades): ?>
                 <th><?php echo "Unidad"." ".$unidades->noUnidad; ?></th>
               <?php endforeach; ?>
               <th>Calificacion final</th>

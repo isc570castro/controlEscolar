@@ -125,5 +125,57 @@ class Curso
 		}
 	}
 
+
+	//Metdod para registrar
+	public function RegistrarCalificacion($idUnidad, $calificacion,$idCurso)
+	{
+		try 
+		{
+			$sql = "INSERT INTO calificacionesParciales VALUES (?,?,?)";
+
+			$this->pdo->prepare($sql)
+			->execute(
+				array(
+					$idUnidad,
+					$calificacion,
+					$idCurso
+				)
+			);
+		} catch (Exception $e) 
+		{
+			die($e->getMessage());
+		}
+	}
+	public function ListarUnidades($claveMateria)
+	{
+		try
+		{
+			$stm = $this->pdo->prepare("SELECT * from unidades where claveMateria=?");
+			
+			$stm->execute(array($claveMateria));
+
+			return $stm->fetchAll(PDO::FETCH_OBJ);
+		}
+		catch(Exception $e)
+		{
+			die($e->getMessage());
+		}
+	}
+
+		public function ListarCalificaciones($noCtrl, $idCurso)
+	{
+		try
+		{
+			$stm = $this->pdo->prepare(" SELECT unidades.noUnidad, calificacionesParciales.calificacion FROM unidades, calificacionesParciales WHERE claveMateria=2 AND unidades.noUnidad=calificacionesParciales.idUnidad;");
+			
+			$stm->execute(array());
+
+			return $stm->fetchAll(PDO::FETCH_OBJ);
+		}
+		catch(Exception $e)
+		{
+			die($e->getMessage());
+		}
+	}
 }
 ?>
