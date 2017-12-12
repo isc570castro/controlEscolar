@@ -337,18 +337,14 @@
           <li <?php if(isset($cursos)){ ?> class="active" <?php } ?>><a  href="?c=Curso"><i class="fa fa-th-large"></i>Cursos</a></li>
           <li <?php if(isset($usuarios)){ ?> class="active" <?php } ?>><a  href="?c=Usuario"><i class="fa fa-users"></i>Usuarios</a></li>
         </ul>
-
       </li>
       <li <?php if(isset($cursos2)){ ?> class="active" <?php } ?>>
         <a href="?c=Curso&a=Seleccion">
           <i class="fa  fa-th-large"></i> <span>Cursos</span>
         </a>
       </li>
-      <li <?php if(isset($ayudas)){ ?> class="active" <?php } ?>>
-        <a href="?c=ayuda">
-          <i class="fa fa-list-alt"></i> <span>Listas</span>
-        </a>
-      </li>
+      <li <?php if(isset($listas)){ ?> class="active" <?php } ?>><a href="?c=Alumno&a=Seleccion"><i class="fa fa-list-alt"></i> Listas</a></li>
+     
     </ul>
   </section>
   <!-- /.sidebar -->

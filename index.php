@@ -3,6 +3,7 @@ session_start();
 $_SESSION['idDocente']=1;
 $_SESSION['docente']="Luis Enrique Marquez Soto";
 $_SESSION['user']="lemarquez";
+$_SESSION['idCurso']=2;
 //error_reporting(ERROR_REPORTING_LEVEL);
 require_once 'model/conexion.php';
 $controller = 'login';

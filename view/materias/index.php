@@ -148,7 +148,6 @@
       <div class="modal-dialog" style="width: 40%">
         <div class="modal-content" id="modalUnidades">
 
-
         </div><!-- /.modal-content -->
       </div><!-- /.modal-dialog -->
     </div><!-- /.modal -->
@@ -157,9 +156,10 @@
       claveMateria = function(claveMateria){
         $("#txtClaveMateria").val(claveMateria);
       }
+      
       listarUnidades = function (claveMateria){
         $.post("index.php?c=Materia&a=ListarUnidades", {claveMateria: claveMateria}, function(modal) {
           $("#modalUnidades").html(modal);
         }); 
       }
-  </script>
+    </script>
