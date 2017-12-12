@@ -270,7 +270,7 @@
           <img src="dist/img/user.png" class="img-circle" alt="User Image">
 
           <p>
-            <?php if(isset($_SESSION['docente'])) echo $_SESSION['docente'];?> 
+            <?php if(isset($_SESSION['docente'])) echo $_SESSION['docente']; if(isset($_SESSION['materia'])){ echo "-"; echo $_SESSION['materia']; } ?> 
           </p>
         </li>
 

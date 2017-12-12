@@ -127,7 +127,7 @@ class Curso
 
 
 	//Metdod para registrar
-	public function RegistrarCalificacion($idUnidad, $calificacion,$idCurso)
+	public function RegistrarCalificacion($idUnidad, $calificacion,$idCursoAlumno)
 	{
 		try 
 		{
@@ -138,7 +138,7 @@ class Curso
 				array(
 					$idUnidad,
 					$calificacion,
-					$idCurso
+					$idCursoAlumno
 				)
 			);
 		} catch (Exception $e) 
@@ -162,13 +162,14 @@ class Curso
 		}
 	}
 
-		public function ListarCalificaciones($noCtrl, $idCurso)
+
+		public function ListarCalificaciones($idCursoAlumno)
 	{
 		try
 		{
-			$stm = $this->pdo->prepare(" SELECT unidades.noUnidad, calificacionesParciales.calificacion FROM unidades, calificacionesParciales WHERE claveMateria=2 AND unidades.noUnidad=calificacionesParciales.idUnidad;");
+			$stm = $this->pdo->prepare("SELECT * FROM calificacionesParciales WHERE idCursoAlumno=?");
 			
-			$stm->execute(array());
+			$stm->execute(array($idCursoAlumno));
 
 			return $stm->fetchAll(PDO::FETCH_OBJ);
 		}
@@ -177,5 +178,27 @@ class Curso
 			die($e->getMessage());
 		}
 	}
+
+	public function AsignaCalificacionFinal($promedio,$idCursoAlumno)
+
+	{
+		try 
+		{
+			$sql = "UPDATE cursos_alumnos SET 
+			calificacion = ? WHERE idCursoAlumno = ?";
+
+			$this->pdo->prepare($sql)
+			->execute(
+				array(
+					$promedio,
+					$idCursoAlumno
+				)
+			);
+		} catch (Exception $e) 
+		{
+			die($e->getMessage());
+		}
+	}
 }
+	
 ?>

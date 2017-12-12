@@ -73,7 +73,7 @@ class CursoController{
 		$_SESSION['idCurso']=$_REQUEST['idCurso'];
 		$this->Seleccion();
 	}
-		public function DesactivarMateria(){
+	public function DesactivarMateria(){
 		unset($_SESSION['claveMateria']);
 		unset($_SESSION['materia']);
 		unset($_SESSION['idCurso']);
@@ -84,18 +84,21 @@ class CursoController{
 		$page="view/cursos/listas.php";
 		require_once 'view/index.php';
 	}
-	public function ActualizarCalificaciones(){
-		//$noUnidades=$_POST['noUnidades'];
-		$noCtrl=$_REQUEST['txtnoCtrl'];
-		if($noUnidades=1){
-			for ($i=1; $i <= 4; $i++) { 
-				$u='calificacion'.$i;
-				$unidadn=$_REQUEST[$u];
-				$this->model->RegistrarCalificacion($i,$unidadn,$noCtrl);
-			}
+	public function RegistraCalificacion(){
+		$idCursoAlumno=$_REQUEST['idCursoAlumno'];
+		$suma=0;
+		for ($i=1; $i <= 5; $i++) { 
+			$c='calificacion'.$i;
+			$calificacion=$_REQUEST[$c];
+			$suma=$suma+$calificacion;
+			$u='idUnidad'.$i;
+			$idUnidad=$_REQUEST[$u];
+			$this->model->RegistrarCalificacion($idUnidad,$calificacion,$idCursoAlumno);
 		}
-		$this->mensaje="Succes";
-		$this->Index();
+		$promedio=$suma/5;
+		$this->model->AsignaCalificacionFinal($promedio,$idCursoAlumno);
+		$this->mensaje="Se ha calificado correctamente al alumno";
+		$this->Listas();
 	}
 }
 ?>
